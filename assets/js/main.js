@@ -37,7 +37,7 @@ let = output = document.querySelector("#output");
 let = abcArray = [];
 
 // Eventlistener
-btn = addEventListener("click", () => {});
+btn = addEventListener("click", verschlüsseln);
 
 
 // a b c d e f g h i j k l m n o p q r s t u v w x y z
@@ -69,8 +69,16 @@ function verschlüsseln(){
 // code value ist verschieben + vergleichen und neu zuordnen
 // ausgabe in großbuchstaben
 
-iText = iText.value.toLowerCase();  // holt sich Value macht alles in kleinbuchstaben zum Vergleichen
-console.log(iText);
+let iTextVal = iText.value
+iTextVal = iTextVal.toLowerCase();  // holt sich Value macht alles in kleinbuchstaben zum Vergleichen
+console.log(iTextVal);
+iText = iTextVal;
+
+/* if (typeof iText === 'string') {
+    iText = iText.toLowerCase();
+    console.log("iText: " + iText +" = string");
+    
+  } */
 
 for ( let i = 0 ; i < iText.length ; i++ ) {
     // iText = String 
@@ -79,17 +87,29 @@ for ( let i = 0 ; i < iText.length ; i++ ) {
     
     // i   0 1 2  
    console.log(iText[i] ) // a b c 
-   abcArray.indexOf(iText[i]);   // Array und String vergleichen geht nicht
-   console.log(abcArrayUr.indexOf(iText[i])); // 0 1 2 
-   console.log(abcArray.indexOf(iText[i])); // 24 25 26 
+   abcArray.indexOf(iText[i]);   // String und Array vergleich
+   
+
+   let abcUrIndex = abcArrayUr.indexOf(iText[i]);
+   console.log(abcUrIndex); // 0 1 2 
+
+   let abc_Vor_VerschlüsselIndex = abcArrayUr.indexOf(iText[i]);
+   console.log(abc_Vor_VerschlüsselIndex); // 0 1 2
+
+   let abc_Nach_VerschlüsselIndex = abcArray.indexOf(iText[i]);
+   console.log(abc_Nach_VerschlüsselIndex); // 23 24 25
+
+   let buchstabeVersch = abcArray[abc_Vor_VerschlüsselIndex];
+   console.log(buchstabeVersch); // d e f g h i j k
+
+// was wenn 0 dann sag 24 und gib 24 aus
+console.log(iText)
+   if( iText > 0 ) {
+console.log("in if")
+output.innerHTML += buchstabeVersch + " ";
+document.write(buchstabeVersch + " ");
 
 
-   if( abcArrayUr.indexOf(iText[i]) != -1 ) {
-
-    let abcUrIndex = abcArrayUr.indexOf(iText[i]);
-    console.log(abcUrIndex); // 0 1 2 
-    let abcNachVerschlüsselIndex = abcArray.indexOf(iText[i]);
-    console.log(abcNachVerschlüsselIndex); // 23 24 25
 
 
 }
