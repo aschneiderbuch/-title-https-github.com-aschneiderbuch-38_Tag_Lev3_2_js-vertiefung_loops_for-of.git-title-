@@ -25,19 +25,19 @@ js
 
 
 // Variablen
-let = iText = document.querySelector("#inputText");
+const iText = document.querySelector("#inputText");
 console.log(iText);
 
-let = iCode = document.querySelector("#inputCodeSchlüssel");
+const iCode = document.querySelector("#inputCodeSchlüssel");
 let = 0;
-let = btn = document.querySelector("#button");
+const btn = document.querySelector("#button");
 
-let = output = document.querySelector("#output");
+const output = document.querySelector("#output");
 
-let = abcArray = [];
+const abcArray = [];
 
 // Eventlistener
-btn = addEventListener("click", verschlüsseln);
+//btn.addEventListener("click", verschlüsseln);
 
 
 // a b c d e f g h i j k l m n o p q r s t u v w x y z
@@ -46,7 +46,9 @@ let abc = "";
 abc = "a b c d e f g h i j k l m n o p q r s t u v w x y z"
 
 // abcArray erzeugen
-abcArray = abc.split(" ");;
+//abcArray = abc.split(" ");
+abcArray.push(...abc.split(" "));
+
 let abcArrayUr = [...abcArray];
 console.log(abc); // String a b c ... z
 console.log(abcArray); // [a, b, c, ... z]  // wird später zu [ d, e, f, ... c ]
@@ -64,15 +66,19 @@ abcArray.push(abcArrayAusschnitt[i]);
 console.log(abcArray.length); // 26
 console.log(abcArray); // d e f .. c  
 
+
+
+
 function verschlüsseln(){
 // text lenght ist runden 
 // code value ist verschieben + vergleichen und neu zuordnen
 // ausgabe in großbuchstaben
 
+console.log(iText)
 let iTextVal = iText.value
+console.log(iTextVal);
 iTextVal = iTextVal.toLowerCase();  // holt sich Value macht alles in kleinbuchstaben zum Vergleichen
 console.log(iTextVal);
-iText = iTextVal;
 
 /* if (typeof iText === 'string') {
     iText = iText.toLowerCase();
@@ -80,31 +86,35 @@ iText = iTextVal;
     
   } */
 
-for ( let i = 0 ; i < iText.length ; i++ ) {
+for ( let i = 0 ; i < iTextVal.length ; i++ ) {
     // iText = String 
     // abcArrayUr = Array
     // abcArray = Array
     
     // i   0 1 2  
-   console.log(iText[i] ) // a b c 
-   abcArray.indexOf(iText[i]);   // String und Array vergleich
+   console.log(iTextVal[i] ) // a b c 
+   abcArray.indexOf(iTextVal[i]);   // String und Array vergleich
    
 
-   let abcUrIndex = abcArrayUr.indexOf(iText[i]);
+   let abcUrIndex = abcArrayUr.indexOf(iTextVal[i]);
    console.log(abcUrIndex); // 0 1 2 
 
-   let abc_Vor_VerschlüsselIndex = abcArrayUr.indexOf(iText[i]);
+   let abc_Vor_VerschlüsselIndex = abcArrayUr.indexOf(iTextVal[i]);
    console.log(abc_Vor_VerschlüsselIndex); // 0 1 2
 
-   let abc_Nach_VerschlüsselIndex = abcArray.indexOf(iText[i]);
+   let abc_Nach_VerschlüsselIndex = abcArray.indexOf(iTextVal[i]);
    console.log(abc_Nach_VerschlüsselIndex); // 23 24 25
 
    let buchstabeVersch = abcArray[abc_Vor_VerschlüsselIndex];
    console.log(buchstabeVersch); // d e f g h i j k
 
+   //
+   console.log(abcArray)
+
+
 // was wenn 0 dann sag 24 und gib 24 aus
-console.log(iText)
-   if( iText > 0 ) {
+console.log(iTextVal)
+   if( iTextVal > 0 ) {
 console.log("in if")
 output.innerHTML += buchstabeVersch + " ";
 document.write(buchstabeVersch + " ");
@@ -114,11 +124,10 @@ document.write(buchstabeVersch + " ");
 
 }
    let iTextArray = []
-   iTextArray.push(iText[i]);
+   iTextArray.push(iTextVal[i]);
    console.log(iTextArray);
 
 }
 
 }
 
-verschlüsseln();
