@@ -37,7 +37,7 @@ const output = document.querySelector("#output");
 const abcArray = [];
 
 // Eventlistener
-//btn.addEventListener("click", verschlüsseln);
+btn.addEventListener("click", verschlüsseln);
 
 
 // a b c d e f g h i j k l m n o p q r s t u v w x y z
@@ -50,7 +50,15 @@ abc = "a b c d e f g h i j k l m n o p q r s t u v w x y z"
 abcArray.push(...abc.split(" "));
 
 let abcArrayUr = [...abcArray];
-console.log(abc); // String a b c ... z
+
+
+
+
+function verschlüsseln(){
+
+
+
+    console.log(abc); // String a b c ... z
 console.log(abcArray); // [a, b, c, ... z]  // wird später zu [ d, e, f, ... c ]
 console.log(abcArrayUr); // [a, b, c,... z]
 
@@ -66,10 +74,6 @@ abcArray.push(abcArrayAusschnitt[i]);
 console.log(abcArray.length); // 26
 console.log(abcArray); // d e f .. c  
 
-
-
-
-function verschlüsseln(){
 // text lenght ist runden 
 // code value ist verschieben + vergleichen und neu zuordnen
 // ausgabe in großbuchstaben
@@ -96,10 +100,10 @@ for ( let i = 0 ; i < iTextVal.length ; i++ ) {
    abcArray.indexOf(iTextVal[i]);   // String und Array vergleich
    
 
-   let abcUrIndex = abcArrayUr.indexOf(iTextVal[i]);
-   console.log(abcUrIndex); // 0 1 2 
+   let abcUrIndex = abcArrayUr.indexOf(iTextVal[i]);    
+   console.log(abcUrIndex); // 0 1 2    die IndexZahl des Inputs 
 
-   let abc_Vor_VerschlüsselIndex = abcArrayUr.indexOf(iTextVal[i]);
+  /*  let abc_Vor_VerschlüsselIndex = abcArrayUr.indexOf(iTextVal[i]);
    console.log(abc_Vor_VerschlüsselIndex); // 0 1 2
 
    let abc_Nach_VerschlüsselIndex = abcArray.indexOf(iTextVal[i]);
@@ -110,6 +114,15 @@ for ( let i = 0 ; i < iTextVal.length ; i++ ) {
 
    //
    console.log(abcArray)
+   console.log(iTextVal[i])                
+   // die IndexZahl des Inputs im Output suchen
+ */
+console.log(abcUrIndex)
+console.log(abcArray)
+console.log(abcArray[abcUrIndex])
+output.innerHTML += abcArray[abcUrIndex];
+   ergebnis = abcArray.indexOf(abcUrIndex);
+   console.log(ergebnis); 
 
 
 // was wenn 0 dann sag 24 und gib 24 aus
